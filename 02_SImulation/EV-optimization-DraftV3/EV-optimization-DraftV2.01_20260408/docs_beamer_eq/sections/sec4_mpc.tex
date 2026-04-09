@@ -1,0 +1,177 @@
+% !TeX root = ../ev_model_equations.tex
+\section{MPC Formulation}
+
+% ====================
+% Frame: Prediction Variables
+% ====================
+\begin{frame}[t]{Prediction Variables: get\_Optspeeds.m}
+    \footnotesize
+    \subsec{1. Decision variable}
+    \al{
+        \bm{x} = \begin{bmatrix} v_2 & v_3 & \cdots & v_{N_p+1} \end{bmatrix}^{\top}
+    }
+
+    \subsec{2. Speed vector}
+    \al{
+        \bm{v}_{\rmn{all}} = \begin{bmatrix} v_0 & \bm{x}^{\top} \end{bmatrix}^{\top}
+    }
+
+    \subsec{3. Step acceleration}
+    \al{
+        a_k = \frac{v_{k+1} - v_k}{\Delta t_k}
+    }
+
+    \subsec{4. Distance propagation}
+    \al{
+        d_k = d_{k-1} + v_k \Delta t_k
+    }
+\end{frame}
+
+% ====================
+% Frame: Objective Function
+% ====================
+\begin{frame}[t]{Objective Function: get\_MPCsolver.m}
+    \footnotesize
+    \subsec{1. Total objective}
+    \al{
+        J = \sum_{k=1}^{N_p} \left[ \alpha J_{\rmn{energy},k} + (1-\alpha) J_{\rmn{deg},k} \right]
+    }
+
+    \subsec{2. Stage energy term}
+    \al{
+        E_{\rmn{trac},k} = P_{\rmn{trac},k} \frac{\Delta t_k}{3600}
+    }
+    \al{
+        E_{\rmn{cool},k} = P_{\rmn{cool},k} \frac{\Delta t_k}{3600}
+    }
+    \al{
+        E_{\rmn{ref}} = V_{\rmn{nom}} Q_{\rmn{bat,nom}}
+    }
+    \al{
+        J_{\rmn{energy},k} =
+        \frac{
+            w_{\rmn{trac}} E_{\rmn{trac},k} +
+            w_{\rmn{cool}} E_{\rmn{cool},k}
+        }{E_{\rmn{ref}}}
+    }
+\end{frame}
+
+% ====================
+% Frame: Aging Cost In The Objective
+% ====================
+\begin{frame}[t]{Aging Cost In The Objective: get\_MPCsolver.m}
+    \footnotesize
+    \subsec{1. Instantaneous aging term from EV model}
+    \al{
+        \rmn{AgeCost}_k = \sigma_k |I_{\rmn{cell},k}|
+    }
+
+    \subsec{2. Current normalization}
+    \al{
+        I_{\rmn{cell,ref}} = \frac{P_{\rmn{max}}}{V_{\rmn{nom}} N_p}
+    }
+
+    \subsec{3. Normalized aging cost}
+    \al{
+        J_{\rmn{deg},k} = \frac{\rmn{AgeCost}_k}{I_{\rmn{cell,ref}}}
+    }
+
+    \subsec{4. Interpretation}
+    \items{
+        \item{$\alpha \uparrow$: more weight on energy reduction}
+        \item{$\alpha \downarrow$: more weight on battery degradation reduction}
+        \item{\texttt{obj\_w\_trac} and \texttt{obj\_w\_cool}: split the energy term between traction and cooling}
+    }
+\end{frame}
+
+% ====================
+% Frame: Nonlinear Constraints
+% ====================
+\begin{frame}[t]{Nonlinear Constraints: get\_MPCsolver.m}
+    \footnotesize
+    \subsec{1. Power and thermal constraints}
+    \al{
+        P_{\rmn{req},k} \le P_{\rmn{max}}
+    }
+    \al{
+        Q_{\rmn{joule},k} \le Q_{\rmn{max}}
+    }
+    \al{
+        P_{\rmn{cool},k} \le P_{\rmn{cool,max}}
+    }
+    \al{
+        T_{\rmn{batt,min}} \le T_{\rmn{batt},k} \le T_{\rmn{batt,max}}
+    }
+
+    \subsec{2. Terminal distance constraint}
+    \al{
+        |d_{\rmn{end}} - d_{\rmn{ref}}| \le \varepsilon_{\rmn{dist}}
+    }
+\end{frame}
+
+% ====================
+% Frame: Gap-Based Bounds
+% ====================
+\begin{frame}[t]{Gap-Based Bounds: get\_bounds.m}
+    \footnotesize
+    \subsec{1. Speed bounds from front and rear gaps}
+    \al{
+        \bar{v}_{k+1} = v_{F,k} + \frac{d_{F,k} - d_{\rmn{tol}}}{\Delta t}
+    }
+    \al{
+        \underline{v}_{k+1} = v_{R,k} + \frac{d_{\rmn{tol}} - d_{R,k}}{\Delta t}
+    }
+
+    \subsec{2. Acceleration bounds}
+    \al{
+        \bar{a}_k = \frac{\bar{v}_{k+1} - v_k}{\Delta t}
+    }
+    \al{
+        \underline{a}_k = \frac{\underline{v}_{k+1} - v_k}{\Delta t}
+    }
+
+    \subsec{3. Clipping and relaxation}
+    \items{
+        \item{no front vehicle: \(\bar{a}_k \leftarrow a_{\rmn{tol}}\)}
+        \item{no rear vehicle: \(\underline{a}_k \leftarrow -a_{\rmn{tol}}\)}
+        \item{all bounds are clipped to \([ -a_{\rmn{tol}}, a_{\rmn{tol}} ]\)}
+    }
+\end{frame}
+
+% ====================
+% Frame: Linear Inequality System
+% ====================
+\begin{frame}[t]{Linear Inequality System: ABineq}
+    \footnotesize
+    \subsec{1. Decision variable}
+    \al{
+        \bm{x} = \begin{bmatrix} v_2 & \cdots & v_{N_p+1} \end{bmatrix}^{\top}
+    }
+
+    \subsec{2. Acceleration constraints}
+    \al{
+        \underline{a}_k \le \frac{v_{k+1} - v_k}{\Delta t_k} \le \bar{a}_k
+    }
+
+    \subsec{3. Speed box constraints}
+    \al{
+        \underline{v}_k \le v_{k+1} \le \bar{v}_k
+    }
+\end{frame}
+
+% ====================
+% Frame: Linear Inequality Matrix Form
+% ====================
+\begin{frame}[t]{Linear Inequality Matrix Form: ABineq}
+    \footnotesize
+    \subsec{4. Matrix form}
+    \al{
+        A_{\rmn{ineq}} \bm{x} \le \bm{b}_{\rmn{ineq}}
+    }
+    \items{
+        \item{rows 1--\(N_p\): upper acceleration constraints}
+        \item{rows \(N_p+1\)--\(2N_p\): lower acceleration constraints}
+        \item{rows \(2N_p+1\)--\(3N_p\): upper speed constraints}
+        \item{rows \(3N_p+1\)--\(4N_p\): lower speed constraints}
+    }
+\end{frame}

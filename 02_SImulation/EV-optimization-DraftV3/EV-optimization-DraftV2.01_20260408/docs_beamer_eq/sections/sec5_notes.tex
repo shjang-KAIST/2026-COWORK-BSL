@@ -1,0 +1,74 @@
+% !TeX root = ../ev_model_equations.tex
+\section{Implementation Notes}
+
+% ====================
+% Frame: Thermal Parameters
+% ====================
+\begin{frame}[t]{Thermal Parameters: get\_parameters.m}
+    \footnotesize
+    \subsec{Temperature settings}
+    \al{
+        T_{\rmn{amb}} = 25^\circ\rmn{C}, \qquad
+        T_{\rmn{init}} = 32^\circ\rmn{C}, \qquad
+        T_{\rmn{ref}} = 20^\circ\rmn{C}
+    }
+    \al{
+        T_{\rmn{batt,min}} = 15^\circ\rmn{C}, \qquad
+        T_{\rmn{batt,max}} = 45^\circ\rmn{C}
+    }
+
+    \subsec{Cooling settings}
+    \al{
+        P_{\rmn{cool,max}} = 4000 \ \rmn{W}
+    }
+    \al{
+        \eta_{\rmn{cool}} = 1.5, \qquad hA = 0
+    }
+
+    \subsec{Thermal capacity}
+    \al{
+        C_{\rmn{th}} = m_{\rmn{bat}} c_p
+    }
+\end{frame}
+
+% ====================
+% Frame: Logging Structure
+% ====================
+\begin{frame}[t]{Logging Structure: get\_HistoryInit.m / get\_HistoryLog.m}
+    \footnotesize
+    \subsec{Prediction logs}
+    \items{
+        \item{\texttt{history.pred.pre}: baseline prediction window}
+        \item{\texttt{history.pred.opt}: optimized prediction window}
+        \item{stored fields: speed, acceleration, power, current, SOC, temperature, aging, and bounds}
+    }
+
+    \subsec{Replay logs}
+    \items{
+        \item{\texttt{history.app}: applied optimized trajectory}
+        \item{\texttt{history.base}: replay-baseline trajectory}
+        \item{meta fields: previous speed, traveled distance, initial position, and battery state}
+    }
+\end{frame}
+
+% ====================
+% Frame: Edit Order
+% ====================
+\begin{frame}[t]{Edit Order When EV Outputs Change}
+    \footnotesize
+    \subsec{Recommended update order}
+    \items{
+        \item{\texttt{get\_evmodel.m}: add or modify \texttt{EVout.xxx}}
+        \item{\texttt{get\_pred\_hist.m}: add the prediction-side field}
+        \item{\texttt{get\_appd\_hist.m}: add the replay-side field}
+        \item{\texttt{get\_plot.m}: update figures only if visualization is needed}
+    }
+
+    \subsec{Current output groups}
+    \items{
+        \item{power: \texttt{P\_req}, \texttt{P\_trac}, \texttt{P\_cool}}
+        \item{battery: \texttt{I\_batt}, \texttt{Q\_Ah}, \texttt{SOC}, \texttt{Rin}}
+        \item{thermal: \texttt{T\_batt}, \texttt{Q\_batt}, \texttt{Q\_env}, \texttt{Q\_cool}}
+        \item{aging: \texttt{Ah\_ir}, \texttt{Q\_loss}, \texttt{Ah\_eff}, \texttt{AgeCost}}
+    }
+\end{frame}

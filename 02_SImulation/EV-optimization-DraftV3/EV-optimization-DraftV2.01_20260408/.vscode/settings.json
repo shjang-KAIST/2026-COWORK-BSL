@@ -1,0 +1,29 @@
+{
+  "latex-workshop.latex.outDir": "%DIR%",
+  "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.synctex.afterBuild.enabled": false,
+  "latex-workshop.formatting.latex": "latexindent",
+  "latex-workshop.formatting.latexindent.path": "C:\\texlive\\2025\\bin\\windows\\latexindent.exe",
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk-lualatex-synctex",
+      "command": "latexmk",
+      "args": [
+        "-lualatex",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "%DOC%"
+      ]
+    }
+  ],
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk-lualatex-synctex",
+      "tools": [
+        "latexmk-lualatex-synctex"
+      ]
+    }
+  ],
+  "latex-workshop.latex.recipe.default": "lastUsed"
+}

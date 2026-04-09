@@ -1,0 +1,85 @@
+% !TeX root = ../ev_model_equations.tex
+\section{Simulation Results}
+
+\newcommand{\ResultPair}[4]{%
+    \begin{columns}[t,totalwidth=\linewidth]
+        \begin{column}{0.49\linewidth}
+            \centering
+            {\scriptsize #1\par}
+            \vspace{0.2em}
+            \includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{#2}
+        \end{column}
+        \begin{column}{0.49\linewidth}
+            \centering
+            {\scriptsize #3\par}
+            \vspace{0.2em}
+            \includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{#4}
+        \end{column}
+    \end{columns}
+}
+
+% ====================
+% Frame: Speed and Distance
+% ====================
+\begin{frame}{Vehicle Motion Results}
+    \ResultPair
+    {Distance history}
+    {Figs/Distance.png}
+    {Acceleration history}
+    {Figs/Acceleration.png}
+\end{frame}
+
+% ====================
+% Frame: Power and Current
+% ====================
+\begin{frame}{Electrical Load Results}
+    \ResultPair
+    {Power demand}
+    {Figs/Power.png}
+    {Battery current}
+    {Figs/Current.png}
+\end{frame}
+
+% ====================
+% Frame: SOC and Temperature
+% ====================
+\begin{frame}{Battery State Results}
+    \ResultPair
+    {State of charge}
+    {Figs/SOC.png}
+    {Battery temperature}
+    {Figs/Temperature.png}
+\end{frame}
+
+% ====================
+% Frame: Cooling and Heat
+% ====================
+\begin{frame}{Thermal Management Results}
+    \ResultPair
+    {Cooling power}
+    {Figs/Cooling.png}
+    {Battery heat generation}
+    {Figs/Q_batt.png}
+\end{frame}
+
+% ====================
+% Frame: Resistance and Throughput
+% ====================
+\begin{frame}{Aging State Results}
+    \ResultPair
+    {Internal resistance}
+    {Figs/Rin.png}
+    {Accumulated Ah throughput}
+    {Figs/Ah_ir.png}
+\end{frame}
+
+% ====================
+% Frame: Capacity Loss
+% ====================
+\begin{frame}{Degradation Results}
+    \ResultPair
+    {Capacity loss}
+    {Figs/Q_loss.png}
+    {Remaining capacity}
+    {Figs/Capacity.png}
+\end{frame}

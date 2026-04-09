@@ -1,0 +1,123 @@
+% ====================
+% Tool
+% ====================
+
+\newcommand{\rmn}[1]{\mathrm{#1}}
+\newcommand{\refcite}[1]{{\color{MICGray}[#1]}}
+\newcommand{\subsec}[1]{%
+    \par\noindent{\normalsize\bfseries #1}%
+}
+
+% itemize helper
+\newcommand{\items}[1]{%
+    \vspace{-0.5em}
+    \begin{itemize}
+        #1
+    \end{itemize}
+}
+
+\newcommand{\al}[1]{%
+    \begin{align}
+        #1
+    \end{align}
+    \vspace{-0.8em}
+}
+
+% ====================
+% Column Layout
+% ====================
+
+\newlength{\ToolColumnWidth}
+\newlength{\ToolArrowWidth}
+\newlength{\ToolFlowColumnSep}
+
+\newcommand{\ColumnTitleFont}{\fontsize{9}{11}\selectfont\bfseries}
+
+\definecolor{ColumnBodyBorder}{RGB}{185,185,185}
+\definecolor{ColumnTitleBorder}{RGB}{185,185,185}
+\definecolor{ColumnTitleFill}{RGB}{226,226,226}
+\definecolor{ColumnShadow}{RGB}{0,0,0}
+
+\newcommand{\ColumnArrowWidth}{0.04\linewidth}
+\newcommand{\FlowColumnSepValue}{0.35em}
+\newcommand{\ArrowColor}{KAISTNavy}
+\newcommand{\ArrowSize}{\normalsize}
+
+\newcommand{\Columstart}[1]{%
+    \begingroup
+    \setlength{\ToolArrowWidth}{\ColumnArrowWidth}%
+    \setlength{\ToolFlowColumnSep}{\FlowColumnSepValue}%
+    \setlength{\columnsep}{\ToolFlowColumnSep}%
+    \pgfmathsetlength{\ToolColumnWidth}{(\linewidth-(((#1-1)*\ToolArrowWidth)+((2*#1-2)*\columnsep)))/#1}%
+    \begin{columns}[c,totalwidth=\linewidth]
+}
+
+\newcommand{\ColumnEnd}{%
+    \end{columns}%
+    \endgroup
+}
+
+\newcommand{\ColumnBox}[2]{%
+    \begin{tikzpicture}
+        \node[
+            draw=ColumnTitleBorder,
+            fill=ColumnTitleFill,
+            rounded corners=3pt,
+            line width=0.4pt,
+            inner xsep=0.7ex,
+            inner ysep=0.7ex,
+            outer sep=0pt,
+            text width=\dimexpr\linewidth-1.4ex\relax,
+            align=center,
+            anchor=north west
+        ] at (0,0) {%
+            \begin{minipage}{\dimexpr\linewidth-1.4ex\relax}
+                \centering
+                {\color{black}\ColumnTitleFont #1}
+            \end{minipage}
+        };
+    \end{tikzpicture}
+    \vspace{0.12em}
+    \begin{tikzpicture}
+        \node[
+            draw=ColumnBodyBorder,
+            fill=white,
+            rounded corners=3pt,
+            line width=0.4pt,
+            inner xsep=0.05ex,
+            inner ysep=0.9ex,
+            outer sep=0pt,
+            anchor=north west,
+            text width=\dimexpr\linewidth-0.1ex\relax,
+            preaction={fill=ColumnShadow,opacity=0.12,transform canvas={xshift=1.4pt,yshift=-1.4pt}}
+        ] at (0,0) {%
+            \begin{minipage}{\dimexpr\linewidth-0.1ex\relax}
+                \raggedright
+                \begin{itemize}
+                    #2
+                \end{itemize}
+            \end{minipage}
+        };
+    \end{tikzpicture}
+}
+
+\newcommand{\ColumnGroup}[1]{%
+    \begin{column}{\ToolColumnWidth}
+        #1
+    \end{column}
+}
+
+\newcommand{\Column}[2]{%
+    \ColumnGroup{%
+        \ColumnBox{#1}{#2}%
+    }%
+}
+
+\newcommand{\ColumnArrow}{%
+    \begin{column}[c]{\ToolArrowWidth}
+        \vfill
+        \centering
+        {{\ArrowSize\color{\ArrowColor}\(\rightarrow\)}}
+        \vfill
+    \end{column}
+}

@@ -1,0 +1,31 @@
+INFO:  ANSI Code Page: 949
+INFO:  latexindent.exe version 3.24.5, 2025-03-13, a script to indent .tex files
+       latexindent.exe lives here: C:/texlive/2025/bin/windows/
+       Mon Apr  6 18:42:00 2026
+       Filename: c:/Users/Seunghun Jang/Desktop/Ongoing_win/2026-Cowork-Battery-thermal-energy/02_SImulation/EV-optimization-DraftV3/EV-optimization-DraftV2/docs_beamer_eq/config/__latexindent_temp_preamble.tex
+INFO:  Processing switches:
+       -y|--yaml: YAML settings specified via command line
+       -c|--cruft: cruft directory
+INFO:  Directory for backup files and log file c:\Users\Seunghun Jang\Desktop\Ongoing_win\2026-Cowork-Battery-thermal-energy\02_SImulation\EV-optimization-DraftV3\EV-optimization-DraftV2\docs_beamer_eq\indent.log:
+       c:\Users\Seunghun Jang\Desktop\Ongoing_win\2026-Cowork-Battery-thermal-energy\02_SImulation\EV-optimization-DraftV3\EV-optimization-DraftV2\docs_beamer_eq\
+INFO:  YAML settings read: defaultSettings.yaml
+       Reading defaultSettings.yaml from C:/texlive/2025/bin/windows/defaultSettings.yaml
+       Reading defaultSettings.yaml (2nd attempt) from C:/texlive/2025/bin/windows/../../texmf-dist/scripts/latexindent/defaultSettings.yaml
+       and then, if necessary, C:/texlive/2025/bin/windows/LatexIndent/defaultSettings.yaml
+INFO:  YAML reading settings
+       Home directory is C:\Users\Seunghun Jang
+       latexindent.pl didn't find indentconfig.yaml or .indentconfig.yaml
+       see all possible locations: https://latexindentpl.readthedocs.io/en/latest/sec-appendices.html#indentconfig-options)
+INFO:  YAML settings read: -y switch
+       YAML setting: defaultIndent:'  '
+       single-quoted string found in -y switch: '  ', substitute to   
+       Updating mainSettings with defaultIndent:   
+INFO:  Phase 1: searching for objects
+INFO:  Phase 2: finding surrounding indentation
+INFO:  Phase 3: indenting objects
+INFO:  Phase 4: final indentation check
+INFO:  Output routine:
+       Not outputting to file; see -w and -o switches for more options.
+       --------------
+INFO:  Please direct all communication/issues to:
+        https://github.com/cmhughes/latexindent.pl

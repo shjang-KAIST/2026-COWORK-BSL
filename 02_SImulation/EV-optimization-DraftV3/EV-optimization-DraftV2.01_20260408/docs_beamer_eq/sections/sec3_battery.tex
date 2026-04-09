@@ -1,0 +1,245 @@
+% !TeX root = ../ev_model_equations.tex
+\section{Battery Electrical and Thermal Model}
+
+% ====================
+% Frame: Battery Configuration And SOC
+% ====================
+\begin{frame}[t]{Battery Model And SOC: get\_evmodel.m}
+    \footnotesize
+    \subsec{Battery hierarchy}
+    \al{\notag
+        96\rmn{s}24\rmn{p} = \underbrace{(16\rmn{s}24\rmn{p})}_{1 module} \times 6
+    }
+    \items{
+        \item{$N_p = 24$: parallel cells per module}
+        \item{$N_{\rmn{s,mod}} = 16$: series cells per module}
+        \item{$N_{\rmn{mod,s}} = 6$: series modules per pack}
+    }
+
+    \subsec{Capacity variables}
+    \al{
+        Q_{\rmn{cell}} = \frac{Q_{\rmn{bat}}}{N_p}
+    }
+    \al{
+        Q_{\rmn{mod}} = Q_{\rmn{bat}}
+    }
+    \subsec{State of charge}
+    \al{
+        \rmn{SOC} = \min\!\left(\max\!\left(\frac{Q_{\rmn{bat}}}{Q_{\rmn{bat,nom}}},0\right),1\right)
+    }
+\end{frame}
+
+% ====================
+% Frame: Resistance And OCV
+% ====================
+\begin{frame}[t]{Resistance And OCV: get\_evmodel.m}
+    \footnotesize
+    \subsec{Module internal resistance}
+    \al{
+        T_{\rmn{mod},^\circ C} = T_{\rmn{pack}} - 273.15
+    }
+    \al{
+        Ah_{\rmn{mod}} = \max(Ah_{\rmn{ir}}, Ah_{\rmn{floor}})
+    }
+    \al{
+        R_{\rmn{mod}} = \rmn{feval}(\rmn{Fit\_IR}, T_{\rmn{mod},^\circ C}, Ah_{\rmn{mod}})
+    }
+    \al{
+        R_{\rmn{pack}} = R_{\rmn{mod}} \, N_{\rmn{mod,s}}
+    }
+
+    \subsec{2. Module OCV polynomial}
+    \al{
+        x = \frac{Q_{\rmn{mod}} - \mu_1}{\mu_2}
+    }
+    \al{
+    \rmn{OCV}_{\rmn{mod}} = p_1 x^6 + p_2 x^5 + p_3 x^4 + p_4 x^3 + p_5 x^2 + p_6 x + p_7
+    }
+    \al{
+    \rmn{OCV}_{\rmn{pack}} = \rmn{OCV}_{\rmn{mod}} \, N_{\rmn{mod,s}}
+    }
+\end{frame}
+
+% ====================
+% Frame: Cooling Power Demand and Controller Design
+% ====================
+\begin{frame}[t]{Cooling Power Demand and Controller Design: get\_evmodel.m}
+    \footnotesize
+    \subsec{Cooling power command}
+    \al{
+        e_T = T_{\rmn{pack}} - T_{\rmn{ref}}
+    }
+    \al{
+        P_{\rmn{cool}} =
+        \begin{cases}
+            P_0 + K_{p,T}(e_T - T_{\rmn{deadband}}), & e_T > T_{\rmn{deadband}} \\
+            0,                                       & \rmn{otherwise}
+        \end{cases}
+    }
+    \al{
+        P_{\rmn{cool}} \in [0, P_{\rmn{cool,max}}]
+    }
+    \items{
+        \item{$e_T$: temperature error}
+        \item{$T_{\rmn{ref}}$: reference temperature of the cooling system}
+        \item{$T_{\rmn{deadband}}$: deadband for cooling activation}
+        \item{$P_0$: baseline cooling power at activation threshold}
+        \item{$K_{p,T}$: proportional gain for cooling power}
+    }
+\end{frame}
+
+% ====================
+% Frame: Cooling Heat And Battery Demand
+% ====================
+\begin{frame}[t]{Cooling Power Consumption Model: get\_evmodel.m}
+    \footnotesize
+    \subsec{Cooling heat removal \refcite{1}}
+    \al{
+        Q_{\rmn{cool}} = \eta_{\rmn{cool}} P_{\rmn{cool}}
+    }
+    \items{
+        \item{$\eta_{\rmn{cool}}$: cooling system efficiency}
+    }
+    \subsec{Battery power demand}
+    \al{
+        P_{\rmn{req}} = P_{\rmn{trac}} + P_{\rmn{cool}}
+    }
+    \Citation{[1] Source text here}
+\end{frame}
+
+
+% ====================
+% Frame: Battery Current Solve
+% ====================
+\begin{frame}[t]{Battery Current Solve: get\_evmodel.m}
+    \footnotesize
+    \subsec{1. Pack current equation}
+    \al{
+    P_{\rmn{req}} = \rmn{OCV}_{\rmn{pack}} I_{\rmn{batt}} - R_{\rmn{pack}} I_{\rmn{batt}}^2
+    }
+    \subsec{2. Discriminant}
+    \al{
+    \Delta = \rmn{OCV}_{\rmn{pack}}^2 - 4 R_{\rmn{pack}} P_{\rmn{req}}
+    }
+    \subsec{3. Current solution}
+    \al{
+    I_{\rmn{batt}} = \frac{\rmn{OCV}_{\rmn{pack}} - \sqrt{\max(\Delta,0)}}{2 R_{\rmn{pack}}}
+    }
+    \al{
+        I_{\rmn{cell}} = \frac{I_{\rmn{batt}}}{N_p}
+    }
+\end{frame}
+
+% ====================
+% Frame: Thermal And Charge States
+% ====================
+\begin{frame}[t]{Thermal And Charge States: get\_evmodel.m}
+    \footnotesize
+    \subsec{1. Thermal terms}
+    \al{
+        Q_{\rmn{joule}} = I_{\rmn{batt}}^2 R_{\rmn{pack}}
+    }
+    \al{
+        Q_{\rmn{env}} = hA(T_{\rmn{pack}} - T_{\rmn{amb}})
+    }
+    \al{
+        Q_{\rmn{cool}} = \eta_{\rmn{cool}} P_{\rmn{cool}}
+    }
+
+    \subsec{2. Temperature update}
+    \al{
+        T_{k+1} = T_k + \frac{\Delta t}{C_{\rmn{th}}} \left( Q_{\rmn{joule}} - Q_{\rmn{env}} - Q_{\rmn{cool}} \right)
+    }
+\end{frame}
+
+% ====================
+% Frame: Charge And Throughput Update
+% ====================
+\begin{frame}[t]{Charge And Throughput Update: get\_evmodel.m}
+    \footnotesize
+    \subsec{3. Charge and throughput update}
+    \al{
+        Q_{\rmn{bat},k+1} = \min\!\left(\max\!\left(Q_{\rmn{bat},k} - I_{\rmn{batt}} \frac{\Delta t}{3600}, 0\right), Q_{\rmn{bat,nom}}\right)
+    }
+    \al{
+    Ah_{\rmn{ir},k+1} = Ah_{\rmn{ir},k} + |I_{\rmn{batt}}| \frac{\Delta t}{3600}
+    }
+    \al{
+    Ah_{\rmn{th},k+1} = Ah_{\rmn{th},k} + |I_{\rmn{cell}}| \frac{\Delta t}{3600}
+    }
+\end{frame}
+
+% ====================
+% Frame: Aging Severity Model
+% ====================
+\begin{frame}[t]{Aging Severity Model: get\_evmodel.m}
+    \footnotesize
+    \subsec{1. SOC-dependent coefficients}
+    \al{
+        (\alpha_{\rmn{age}}, \beta_{\rmn{age}}) =
+        \begin{cases}
+            (1287.6, 6356.3), & \rmn{SOC}_{k+1} \le 0.45 \\
+            (1385.5, 4193.2), & \rmn{SOC}_{k+1} > 0.45
+        \end{cases}
+    }
+
+    \subsec{2. Cell C-rate}
+    \al{
+        Q_{\rmn{cell,nom}} = \frac{Q_{\rmn{bat,nom}}}{N_p}
+    }
+    \al{
+    I_c = \frac{|I_{\rmn{cell}}|}{Q_{\rmn{cell,nom}}}
+    }
+
+    \subsec{3. Aging factor}
+    \al{
+        f_{\rmn{age}} =
+        (\alpha_{\rmn{age}} \rmn{SOC}_{k+1} + \beta_{\rmn{age}})
+        \exp\!\left(
+        \frac{-31700 + 163.3 I_c}{R_{\rmn{gas}} T_{k+1}}
+        \right)
+    }
+    \al{
+    Q_{\rmn{loss}} = f_{\rmn{age}} \, Ah_{\rmn{th},k+1}^{n_{\rmn{age}}}
+    }
+\end{frame}
+
+% ====================
+% Frame: Normalized Aging Cost
+% ====================
+\begin{frame}[t]{Normalized Aging Cost: get\_evmodel.m}
+    \footnotesize
+    \subsec{1. Reference aging factor}
+    \al{
+    f_{\rmn{age,ref}} =
+    (\alpha_{\rmn{ref}} \rmn{SOC}_{\rmn{ref}} + \beta_{\rmn{ref}})
+    \exp\!\left(
+    \frac{-31700 + 163.3 C_{\rmn{rate,ref}}}{R_{\rmn{gas}} T_{\rmn{ref,age}}}
+    \right)
+    }
+
+    \subsec{2. Lifetime scaling}
+    \al{
+    \gamma = \left(\frac{Q_{\rmn{ref,\%}}}{f_{\rmn{age}}}\right)^{1/n_{\rmn{age}}}
+    }
+    \al{
+    \Gamma = \left(\frac{Q_{\rmn{ref,\%}}}{f_{\rmn{age,ref}}}\right)^{1/n_{\rmn{age}}}
+    }
+    \al{
+        \sigma = \frac{\Gamma}{\gamma}
+    }
+\end{frame}
+
+% ====================
+% Frame: Effective Aging Throughput
+% ====================
+\begin{frame}[t]{Effective Aging Throughput: get\_evmodel.m}
+    \footnotesize
+    \subsec{3. Effective throughput and stage cost}
+    \al{
+    Ah_{\rmn{eff},k+1} = Ah_{\rmn{eff},k} + \sigma |I_{\rmn{cell}}| \frac{\Delta t}{3600}
+    }
+    \al{
+    \rmn{AgeCost}_k = \sigma |I_{\rmn{cell}}|
+    }
+\end{frame}

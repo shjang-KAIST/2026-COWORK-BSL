@@ -1,0 +1,239 @@
+\usetheme[numbering=none,progressbar=none]{metropolis}
+% 본문 글씨는 유지하고 수식만 논문 느낌의 serif 수학 글꼴로 사용
+\usefonttheme[onlymath]{serif}
+
+\input{config/packages}
+\input{config/tool}
+
+\ifPDFTeX\else
+  \setsansfont{TeX Gyre Heros}[
+    Scale=MatchLowercase
+  ]
+  \setmainfont{TeX Gyre Heros}[
+    Scale=MatchLowercase
+  ]
+  \setsanshangulfont{Malgun Gothic}[
+    Scale=MatchLowercase
+  ]
+  \setmainhangulfont{Malgun Gothic}[
+    Scale=MatchLowercase
+  ]
+  \setmonofont{Latin Modern Mono}[
+    Scale=MatchLowercase
+  ]
+\fi
+\setlength{\parindent}{0pt}
+
+% ====================
+% Common Setup
+% ====================
+
+% 공통 색상
+\definecolor{MICNavy}{RGB}{22,86,156}
+\definecolor{MICDeep}{RGB}{16,63,119}
+\definecolor{MICSky}{RGB}{86,170,228}
+\definecolor{MICSoft}{RGB}{245,249,253}
+\definecolor{MICLine}{RGB}{205,219,235}
+\definecolor{MICGray}{RGB}{120,120,120}
+\colorlet{KAISTNavy}{MICNavy}
+\colorlet{SoftBg}{MICSoft}
+
+% 공통 색상 설정
+\setbeamercolor{normal text}{fg=black,bg=white}
+\setbeamercolor{alerted text}{fg=MICNavy}
+\setbeamercolor{example text}{fg=MICDeep}
+\setbeamercolor{palette primary}{fg=white,bg=MICNavy}
+\setbeamercolor{frametitle}{fg=white,bg=MICNavy}
+\setbeamercolor{title}{fg=MICNavy}
+\setbeamercolor{subtitle}{fg=MICGray}
+\setbeamercolor{progress bar}{fg=MICNavy,bg=MICLine}
+\setbeamercolor{progress bar in head/foot}{fg=MICNavy,bg=MICLine}
+\setbeamercolor{section in toc}{fg=MICDeep}
+\setbeamercolor{block title}{fg=white,bg=MICNavy}
+\setbeamercolor{block body}{fg=black,bg=MICSoft}
+\setbeamercolor{itemize item}{fg=black}
+\setbeamercolor{itemize subitem}{fg=black}
+
+% 목차에서 section 번호를 자동 표시
+\setbeamertemplate{section in toc}[sections numbered]
+
+% 공통 글꼴 크기
+% 제목 글자 크기: 첫 숫자는 글자 크기, 두 번째 숫자는 줄간격
+\setbeamerfont{title}{series=\bfseries,size=\fontsize{20}{24}\selectfont}
+% 부제 글자 크기: 첫 숫자는 글자 크기, 두 번째 숫자는 줄간격
+\setbeamerfont{subtitle}{size=\fontsize{10}{15}\selectfont}
+\setbeamerfont{author}{size=\large}
+\setbeamerfont{date}{size=\small}
+\setbeamerfont{frametitle}{series=\bfseries,size=\Large}
+\setbeamerfont{footline}{size=\fontsize{6.5}{7.5}\selectfont}
+\setbeamerfont{CitationNote}{size=\fontsize{6}{7.2}\selectfont}
+
+% ====================
+% Theme Setup
+% ====================
+
+\metroset{
+  titleformat plain=regular,
+  titleformat frame=regular,
+  sectionpage=none,
+  subsectionpage=none,
+  block=fill
+}
+
+\setbeamertemplate{navigation symbols}{}
+
+% ====================
+% Title Page
+% ====================
+
+% 표지 로고 크기 배율: 숫자 하나만 바꾸면 전체 크기가 같이 바뀜
+\newcommand{\TitleLogoScale}{0.2}
+% 표지 로고 위 간격
+\newcommand{\TitleLogoX}{0cm}
+\newcommand{\TitleLogoY}{-0.315cm}
+% 표지 로고 파일을 감싸는 공통 양식
+\newcommand{\TitleGraphicBox}[1]{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[anchor=center] at (\TitleLogoX,\TitleLogoY) {%
+      \scalebox{\TitleLogoScale}{\includegraphics{#1}}%
+    };
+  \end{tikzpicture}%
+}
+\titlegraphic{\TitleGraphicBox{Wordmark-02.png}}
+
+% 표지 전용 상단 박스 바
+\newcommand{\TopBar}{%
+  \leavevmode%
+  \hbox{%
+    % ht, dp 값을 바꾸면 박스 바 두께가 바뀜
+    \begin{beamercolorbox}[wd=\paperwidth,ht=5.5ex,dp=1.1ex,leftskip=1.0em,rightskip=1.0em]{palette primary}%
+    \end{beamercolorbox}%
+  }%
+}
+
+\makeatletter
+% 표지 슬라이드 출력 매크로
+\newcommand{\makeTitlePage}{%
+  \begingroup
+  \setbeamertemplate{headline}{\TopBar}
+  \setbeamertemplate{footline}{}
+  \begin{frame}[plain]
+    % 표지 전체 블록 위치 조정
+    % \vspace*{-0.2em}
+    \begin{center}
+      \ifx\insertsubtitle\@empty\else
+      % 부제와 제목 사이 간격
+      \vspace{0.1em}
+      {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}
+      \fi
+      {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par}
+      % 제목 블록과 이름 사이 간격
+      \vspace{0.8em}
+      % 이름 글자 크기
+      {{\fontsize{12}{17}\selectfont\insertauthor\par}}
+      % 이름과 추가 정보 사이 간격
+      \vspace{0.35em}
+      % 소속/직위 글자 크기
+      {{\fontsize{10}{12}\selectfont\AuthorInfo\par}}
+      % 날짜 위 간격
+      \vspace{0.5em}
+      {\usebeamerfont{date}\insertdate\par}
+      % 날짜와 로고 사이 간격
+      \inserttitlegraphic
+    \end{center}
+  \end{frame}
+  \endgroup
+}
+
+% ====================
+% Contents Page
+% ====================
+
+% 목차 슬라이드 출력 매크로
+\newcommand{\makeContentsPage}{%
+  \begingroup
+  % 목차 페이지는 위/아래 바를 숨김
+  \setbeamertemplate{headline}{}
+  \setbeamertemplate{footline}{}
+  \begin{frame}{Contents}
+    \tableofcontents
+  \end{frame}
+  \endgroup
+}
+
+% ====================
+% End Page
+% ====================
+
+% 마지막 Q/A 슬라이드 출력 매크로
+\newcommand{\makeEndPage}{%
+  \begingroup
+  \setbeamertemplate{headline}{}
+  \setbeamertemplate{footline}{}
+  \begin{frame}[plain]
+    \begin{center}
+      \vfill
+      {\usebeamerfont{title}\usebeamercolor[fg]{title}Q/A\par}
+      \vfill
+    \end{center}
+  \end{frame}
+  \endgroup
+}
+
+% ====================
+% Frame Layout
+% ====================
+
+% 현재 프레임 제목 저장용 변수
+\newcommand{\CurrentFrameTitle}{}
+
+% 슬라이드 안에서 인용문을 넣을 때 사용하는 명령
+% 사용 예시: \Citation{[1] Source: Smith et al., 2024}
+\newcommand{\Citation}[1]{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[
+      anchor=south west,
+      xshift=0.5em,
+      yshift=2.6ex,
+      inner sep=0pt,
+      outer sep=0pt
+    ] at (current page.south west) {{\color{MICGray}\usebeamerfont{CitationNote}\itshape \shortstack[l]{#1}}};
+  \end{tikzpicture}%
+}
+
+% 일반 슬라이드 하단 섹션/페이지 번호 바
+\newcommand{\SectionBar}{%
+  \leavevmode%
+  \hbox{%
+    % ht, dp 값을 바꾸면 하단 바 높이가 바뀜
+    \begin{beamercolorbox}[wd=\paperwidth,ht=1.9ex,dp=0.9ex,leftskip=1.0em,rightskip=1.0em]{palette primary}%
+      \strut\usebeamerfont{footline}\thesection.\ \insertsectionhead%
+      \hspace{0.6em}%
+      |%
+      \hspace{0.6em}%
+      \CurrentFrameTitle%
+      \hfill%
+      \strut\insertframenumber/\inserttotalframenumber%
+    \end{beamercolorbox}%
+  }%
+}
+
+\setbeamertemplate{footline}{%
+  \SectionBar
+}
+
+% 일반 슬라이드 제목 바
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip
+  % ht, dp, leftskip, rightskip 값을 바꾸면 제목 바 크기와 여백이 바뀜
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=1.1ex,leftskip=1.0em,rightskip=1.0em]{frametitle}%
+    % 현재 프레임 제목을 실제 문자열로 저장해서 하단 바에 그대로 표시
+    \xdef\CurrentFrameTitle{\insertframetitle}%
+    \usebeamerfont{frametitle}\insertframetitle
+  \end{beamercolorbox}%
+}
+\addtobeamertemplate{frame begin}{\gdef\CurrentFrameTitle{}}{}
+
+\renewcommand\[{\begin{equation}}
+      \renewcommand\]{\end{equation}}
+\makeatother

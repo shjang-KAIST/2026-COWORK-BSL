@@ -1,0 +1,124 @@
+% !TeX root = ../ev_model_equations.tex
+\section{Powertrain Model}
+
+% ====================
+% Frame: Road Slope And Position
+% ====================
+\begin{frame}[t]{Road Slope And Position: get\_slope.m}
+    \footnotesize
+    \subsec{Absolute longitudinal position}
+    \al{
+        s(t) = d(t) + x_0
+    }
+    \items{
+        \item{$s(t)$: absolute longitudinal distance along the route}
+        \item{$d(t)$: cumulative traveled distance over the rollout}
+        \item{$x_0$: initial position}
+    }
+    \subsec{Interpolated road slope}
+    \al{
+        g(s(t_{\rmn{init}})) = \operatorname{interp1}\!\left(\rmn{degmap}(:,1),\rmn{degmap}(:,2), s(t_{\rmn{init}})\right),
+    }
+    with slope clamping
+    \al{
+        g_{\rmn{slope}} = \max\!\left(\min\!\left(g,0.3\right),-0.3\right)
+    }
+    The road angle is then calculated as
+    \al{
+        \theta_{\rmn{road}} = \tan^{-1}(g_{\rmn{slope}})
+    }
+\end{frame}
+
+% ====================
+% Frame: Longitudinal Torque Terms
+% ====================
+\begin{frame}[t]{Longitudinal Torque Terms: get\_evmodel.m}
+    \footnotesize
+    \subsec{Torque components}
+    \al{
+        T_{\rmn{acc}} = \frac{m_{\rmn{eq}} a R_t}{\gamma}
+    }
+    \al{
+        T_{\rmn{air}} = \frac{k_{\rmn{air}} (v + v_w)^2 R_t}{\gamma}
+    }
+    \al{
+        T_{\rmn{grad}} = \frac{m g \sin(\theta_{\rmn{road}}) R_t}{\gamma}
+    }
+    \al{
+        T_{\rmn{roll}} = \frac{\rmn{RRC} \, m g \cos(\theta_{\rmn{road}}) R_t}{\gamma}
+    }
+    total mechanical torque
+    \al{
+        T_{\rmn{mech}} = T_{\rmn{acc}} + T_{\rmn{air}} + T_{\rmn{grad}} + T_{\rmn{roll}}
+    }
+\end{frame}
+
+% ====================
+% Frame: Motor Torque And Speed
+% ====================
+\begin{frame}[t]{Motor Torque And Speed: usr\_MOVE2MT.m}
+    \footnotesize
+    \subsec{Map input torque}
+    \al{
+        T_{\rmn{mot}} =
+        \frac{
+            \left(
+            m a + \frac{1}{2}(0.5)(1.188)(2.06)\left(\frac{\rmn{SP}}{3.6}\right)^2 + \rmn{RRC} m g
+            \right) R
+        }{\rmn{gear}}
+    }
+    \items{
+        \item{$\rmn{SP}$: vehicle speed in km/h}
+        \item{$T_{\rmn{mot}}$: torque input to the power map}
+    }
+
+    \subsec{Motor speed}
+    \al{
+        \omega_m = \left| \frac{v}{R_t} \right| \gamma
+    }
+    \al{
+        \rmn{rpm} = \omega_m \frac{30}{\pi}
+    }
+\end{frame}
+
+% ====================
+% Frame: Traction Power Map
+% ====================
+\begin{frame}[t]{Traction Power Map: usr\_MT2BC\_sys.m}
+    \footnotesize
+    \subsec{Polynomial inputs}
+    \al{
+        \bm{x} = \begin{bmatrix} 1 & MT & MT^2 & MT^3 \end{bmatrix}
+    }
+    \al{
+        \bm{y} = \begin{bmatrix} 1 & SP & SP^2 & 1 \end{bmatrix}
+    }
+
+    \subsec{Map output}
+    \al{
+        \rmn{consumption} = \sum \bm{y} \odot (\rmn{sys}\,\bm{x}^{\top})^{\top}
+    }
+    traction electrical power
+    \al{
+        P_{\rmn{raw}} = 10^3 \cdot \rmn{usr\_MT2BC\_sys}(T_{\rmn{mot}}, v_{\rmn{km/h}}, \rmn{BPsys})
+    }
+\end{frame}
+
+% ====================
+% Frame: Regenerative Braking
+% ====================
+\begin{frame}[t]{Regenerative Braking: usr\_REGENBP.m}
+    \footnotesize
+    positive traction
+    \al{
+        P_{\rmn{trac}} = P_{\rmn{raw}}, \qquad P_{\rmn{raw}} \ge 0
+    }
+
+    regenerative operation
+    \al{
+        \rmn{coeff} = \exp\!\left(\frac{0.0411}{|a|}\right)^{-1}
+    }
+    \al{
+        P_{\rmn{trac}} = 0.125 \cdot \rmn{coeff} \cdot P_{\rmn{raw}}, \qquad P_{\rmn{raw}} < 0
+    }
+\end{frame}

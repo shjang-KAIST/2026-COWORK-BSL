@@ -1,0 +1,124 @@
+% !TeX root = ../ev_model_equations.tex
+\section{Architecture}
+
+% ====================
+% Frame: Overall Architecture
+% ====================
+\begin{frame}[t]{Overall Architecture: main.m}
+    \scriptsize
+    \subsec{1. Traffic rollout}
+    \items{
+        \item{\texttt{VissimInitconfig}, \texttt{VissimSetupScenario}}
+        \item{\texttt{VissimRunInit}: warm-up and target vehicle detection}
+        \item{\texttt{VissimRollout}: \(N_p+1\)-step prediction window from VISSIM}
+    }
+
+    \subsec{2. Optimization and model rollout}
+    \items{
+        \item{\texttt{get\_bounds}: gap-based speed and acceleration bounds}
+        \item{\texttt{get\_MPCsolver}: constrained speed-profile MPC}
+        \item{\texttt{get\_Optspeeds}: baseline/optimized EV rollout over the window}
+    }
+
+    \subsec{3. Replay and logging}
+    \items{
+        \item{\texttt{VissimRewind}: return to the current control step}
+        \item{\texttt{VissimReplayOpt}: apply the optimized command}
+        \item{\texttt{get\_HistoryInit}, \texttt{get\_HistoryLog}, \texttt{get\_plot}}
+    }
+\end{frame}
+
+% ====================
+% Frame: VISSIM-MATLAB Block Diagram
+% ====================
+\begin{frame}{VISSIM--MATLAB Block Diagram}
+    \fontsize{6.8}{8}\selectfont
+    \Columstart{3}
+    \ColumnGroup{
+        \ColumnBox{VISSIM}{
+            \item \texttt{VissimSetupScenario}
+            \item \texttt{VissimRunInit}
+            \item \texttt{VissimRollout}
+            \item ego speed, position, gap, lane states
+        }
+    }
+    \ColumnArrow
+    \ColumnGroup{
+        \ColumnBox{MATLAB}{
+            \item \texttt{get\_bounds}
+            \item \texttt{get\_MPCsolver}
+            \item \texttt{get\_Optspeeds}
+            \item \texttt{get\_evmodel}
+            \item speed optimization with power, thermal, and aging models
+        }
+    }
+    \ColumnArrow
+    \ColumnGroup{
+        \ColumnBox{Replay / Logging}{
+            \item \texttt{VissimRewind}
+            \item \texttt{VissimReplayOpt}
+            \item \texttt{get\_HistoryLog}
+            \item applied trajectory and battery-state update
+        }
+    }
+    \ColumnEnd
+
+    \vspace{0.4em}
+    \centering
+    \footnotesize
+    Prediction window from VISSIM \(\rightarrow\) optimization in MATLAB \(\rightarrow\) replay and history update
+\end{frame}
+
+% ====================
+% Frame: Models Considered
+% ====================
+\begin{frame}[t]{Models Considered In The Codebase}
+    \scriptsize
+    \subsec{1. Traffic interaction model}
+    \items{
+        \item{ego speed, position, acceleration, front gap, rear gap}
+        \item{prediction window generated from VISSIM rollout}
+        \item{gap-based bounds for feasible speed planning}
+    }
+
+    \subsec{2. Powertrain model}
+    \items{
+        \item{road slope interpolation from \texttt{StudyArea\_SlopeMap.csv}}
+        \item{longitudinal torque balance with drag, grade, and rolling resistance}
+        \item{traction and regenerative power maps}
+    }
+
+    \subsec{3. Battery model}
+    \items{
+        \item{pack/module/cell hierarchy}
+        \item{OCV and resistance model}
+        \item{thermal management and current solve}
+        \item{aging and normalized degradation cost}
+    }
+\end{frame}
+
+% ====================
+% Frame: State Flow
+% ====================
+\begin{frame}[t]{State Flow Across The Closed Loop}
+    \footnotesize
+    \subsec{Traffic states}
+    \items{
+        \item{\texttt{Pred\_speds}: ego motion, gaps, and neighbor speeds}
+        \item{used by \texttt{get\_bounds} and \texttt{get\_MPCsolver}}
+    }
+
+    \subsec{Battery states}
+    \items{
+        \item{\texttt{batt}: \(Q_{\rmn{bat}}, T, Ah_{\rmn{ir}}, Ah_{\rmn{th}}, Ah_{\rmn{eff}}\)}
+        \item{prediction-side copies in \texttt{get\_Optspeeds}}
+        \item{real state update in \texttt{VissimReplayOpt}}
+    }
+
+    \subsec{Logged outputs}
+    \items{
+        \item{prediction window: baseline vs optimized}
+        \item{replay trajectory: applied vs baseline}
+        \item{power, current, SOC, temperature, and aging indicators}
+    }
+\end{frame}

@@ -1,0 +1,7 @@
+\beamer@sectionintoc {1}{Architecture}{3}{0}{1}
+\beamer@sectionintoc {2}{Powertrain Model}{7}{0}{2}
+\beamer@sectionintoc {3}{Battery Electrical and Thermal Model}{12}{0}{3}
+\beamer@sectionintoc {4}{MPC Formulation}{22}{0}{4}
+\beamer@sectionintoc {5}{Implementation Notes}{29}{0}{5}
+\beamer@sectionintoc {6}{Simulation Results}{32}{0}{6}
+\beamer@sectionintoc {7}{Model Figures}{38}{0}{7}

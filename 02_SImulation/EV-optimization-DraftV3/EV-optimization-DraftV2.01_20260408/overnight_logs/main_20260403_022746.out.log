@@ -1,0 +1,628 @@
+[경고: 이름이 존재하지 않거나 디렉터리가 아님: C:\casadi-3.7.2-windows64-matlab2018b] 
+
+======================================================
+      [VissimInitconfig] 시뮬레이션 로드 중... 
+======================================================
+성공: 프로세스 "VISSIM.exe"(PID 45472)이(가) 종료되었습니다. 
+>> 기존에 실행 중이던 Vissim 프로세스를 강제 종료했습니다.
+>> Vissim이 실행되었습니다.
+>> 네트워크 로드: C:\Users\Seunghun Jang\Desktop\Ongoing_win\2026-Cowork-Battery-thermal-energy\02_SImulation\EV-optimization-DraftV3\EV-optimization-DraftV2\Matlab_simul.inpx
+>> [VissimInitconfig] 시뮬레이션 로드 완료.
+======================================================
+[경고: Primary save path not found. Using fallback path.] 
+[> main (31번 라인)] 
+Start!, i: 1, j: 1
+
+======================================================
+      [VissimSetup] 시나리오 파라미터 설정 중... 
+======================================================
+>> Link 1 설정 완료.
+>> Random Seed : 42
+>> Time Step   : 0.2 [s] (Resolution: 5)
+>> Sim Speed   : 10
+>> Flow1 vol   : 1260.0 [veh/hr]
+>> Flow2 vol   : 108.0 [veh/hr]
+>> Flow3 vol   : 54.0 [veh/hr]
+>> Flow4 vol   : 378.0 [veh/hr]
+>> Total vol   : 1800.0 [veh/hr]
+>> [VissimSetup] 시나리오 파라미터 설정 완료.
+======================================================
+
+======================================================
+      [VissimRunInit] Warm-up 진행 중... (2000 steps) 
+======================================================
+>> Warm-up 완료. (Simul Step: 2001)
+>> Link 3 에서 타겟 차량 탐색 시작.
+>> Link 3 에서 타겟 차량 발견! (ID: 174)
+>> Link 1 에서 타겟 차량 탐색 시작.
+>> Link 1 에서 타겟 차량 발견! (ID: 174)
+>> [VissimRunInit] Warm-up 완료.
+======================================================
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 2015
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 1
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 2065
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 2
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 2115
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 3
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 2165
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 4
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 2215
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 5
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 2265
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 6
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 2315
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 7
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 2365
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 8
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 2415
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=2 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 9
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 2465
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 10
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 2515
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 11
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 2565
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 12
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 2615
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 13
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 2665
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 14
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 2715
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 15
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 2765
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 16
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 2815
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=2 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 17
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 2865
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=2 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 18
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 2915
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 19
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 2965
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 20
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 3015
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=2 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 21
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 3065
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 22
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 3115
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=2 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 23
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 3165
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=2 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 24
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 3215
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=2 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 25
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 3265
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=2 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 26
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 3315
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 27
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 3365
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 28
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 3415
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 29
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 3465
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 30
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 3515
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 31
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 3565
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=2 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 32
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 3615
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 33
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 3665
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 34
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 3715
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 35
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 3765
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 36
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 3815
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 37
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 3865
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 38
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 3915
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 39
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 3965
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=2 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 40
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 4015
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=2 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 41
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 4065
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 42
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 4115
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 43
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 4165
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 44
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 4215
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 45
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 4265
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=2 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 46
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 4315
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 47
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 4365
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=2 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 48
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 4415
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=2 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 49
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 4465
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=2 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 50
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 4515
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 51
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 4565
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 52
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 4615
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 53
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 4665
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 54
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 4715
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 55
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 4765
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=2 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 56
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 4815
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 57
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 4865
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 58
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 4915
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=2 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 59
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 4965
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 60
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 5015
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=2 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 61
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 5065
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 62
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 5115
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 63
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 5165
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 64
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 5215
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 65
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 5265
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 66
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 5315
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 67
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 5365
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=2 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 68
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 5415
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 69
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 5465
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 70
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 5515
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 71
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 5565
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=2 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 72
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 5615
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=2 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 73
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 5665
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 74
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 5715
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 75
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 5765
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 76
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 5815
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=2 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 77
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 5865
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=2 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 78
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 5915
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 79
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 5965
+[경고: [get_MPCsolver] Optimization failed. exitflag=-2] 
+[> get_MPCsolver (59번 라인)
+get_Optspeeds (58번 라인)에서
+main (89번 라인)에서] 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 80
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 6015
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=2 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 81
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 6065
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=1 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 82
+
+[VissimRollout] >> Prediction data logged
+[VissimRewind] >> Rewinding to Fixed_steps = 6115
+[get_MPCsolver] >> Optimization SUCCESS | exitflag=2 
+[get_HistoryLog] >> Optimized data logged
+[VissimReplayOpt] Apply OPT for Np steps (open-loop) and update REAL+BASE batteries...
+[Window] >> Prediction window = 83
+
+[VissimRollout] >> Prediction data logged
+>> Simulation finished.
+Saved: C:\Users\Seunghun Jang\Desktop\Ongoing_win\2026-Cowork-Battery-thermal-energy\02_SImulation\EV-optimization-DraftV3\EV-optimization-DraftV2\fig_results\DATA_FLOW_1800_alpha5_inisoc0_8_without_resist_variation.mat

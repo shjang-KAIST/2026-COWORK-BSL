@@ -1,0 +1,21 @@
+\usepackage{iftex}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{booktabs}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{adjustbox}
+
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage[scaled=0.95]{helvet}
+  \usepackage{courier}
+  \renewcommand{\familydefault}{\sfdefault}
+\else
+  \usepackage{fontspec}
+  \usepackage{kotex}
+\fi
+
+\usetikzlibrary{positioning,arrows.meta,shapes.geometric}
